@@ -14,6 +14,9 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+env_path = Path('.')/'.env'
+load_dotenv(dotenv_path=env_path)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -22,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'nhb$lo1_i-+(c6idti2ieeob2d)=(wos8axif2hy)$sk7j6^$('
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -172,10 +175,10 @@ ACCOUNT_FORMS = {'signup': 'sign.models.BasicSignupForm'}
 EMAIL_HOST = 'smtp.inbox.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'lady.nadya20'
-EMAIL_HOST_PASSWORD = 'butakova90BNN'
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_USE_SSL = True
 
-SERVER_EMAIL = 'lady.nadya20@mail.ru'
+SERVER_EMAIL = os.detenv("SERVER_EMAIL")
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER + "@inbox.ru"
 
